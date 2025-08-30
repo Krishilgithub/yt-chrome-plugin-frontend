@@ -2,11 +2,11 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
 	const outputDiv = document.getElementById("output");
-	const API_KEY = "YOUR_API_KEY"; // Replace with your actual YouTube Data API key
-	const API_URL = "http://my-elb-2062136355.us-east-1.elb.amazonaws.com:80";
+	const API_KEY = process.env.YT_API_KEY; // Replace with your actual YouTube Data API key
+	const API_URL = process.env.YT_API_URL;
 
 	// Get the current tab's URL
-	chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+	chrome.tabs.query({ active: true, currentWindow: true}, async (tabs) => {
 		const url = tabs[0].url;
 		const youtubeRegex =
 			/^https:\/\/(?:www\.)?youtube\.com\/watch\?v=([\w-]{11})/;
